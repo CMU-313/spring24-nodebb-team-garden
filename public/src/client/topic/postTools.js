@@ -253,6 +253,10 @@ define('forum/topic/postTools', [
         postContainer.on('click', '[component="post/chat"]', function () {
             openChat($(this));
         });
+
+        postContainer.on('click', '[component="post/anonymize"]', function () {
+            console.log("worked!");
+        });
     }
 
     async function onReplyClicked(button, tid) {
