@@ -87,6 +87,8 @@ define('forum/topic/postTools', [
 
     function addPostHandlers(tid) {
         const postContainer = components.get('topic');
+        console.assert(typeof(postContainer) == 'object');
+        console.assert(typeof(postContainer.on) === 'function');
 
         handleSelectionTooltip();
 
@@ -254,7 +256,10 @@ define('forum/topic/postTools', [
             openChat($(this));
         });
 
-        postContainer.on('click', '[component="post/anonymize"]', function () {
+        // handles what happens when an post/anonymize component is clicked
+        console.assert(typeof(postContainer) == 'object');
+        console.assert(typeof(postContainer.on) === 'function');
+        postContainer.on('click', '[component="post/anonymize"]', function () {            
             console.log("worked!");
         });
     }
