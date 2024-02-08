@@ -83,6 +83,11 @@
             <span component="post/bookmark-count" class="bookmarkCount badge" data-bookmarks="{posts.bookmarks}">{posts.bookmarks}</span>&nbsp;
         </a>
     </li>
+    <li>
+        <a component="post/anonymize" role="menuitem" tabindex="-1" href="#">
+            <span class="anonymize-text">[[topic:anonymize]]</span>
+        </a>
+    </li>
     {{{ end }}}
 
     <li>
