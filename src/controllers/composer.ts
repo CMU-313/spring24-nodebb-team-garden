@@ -67,7 +67,8 @@ type ComposerData = {
     title?: string,
     tags?: string[],
     thumb?: string,
-    noscript?: string
+    noscript?: string,
+    is_anonymous?: boolean // new field to indicate anonymous post
 }
 
 type QueueResult = {
@@ -87,6 +88,7 @@ export async function post(req: Request<object, object, ComposerData> & { uid: n
         timestamp: Date.now(),
         content: body.content,
         fromQueue: false,
+        is_anonymous: body.is_anonymous,
     };
     req.body.noscript = 'true';
 
