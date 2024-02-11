@@ -44,7 +44,10 @@ module.exports = function (Posts) {
             if (!uidToUser.hasOwnProperty(post.uid)) {
                 post.uid = 0;
             }
-            post.user = uidToUser[post.uid];
+            if (!post.anonymous && post.uid === 0) {
+                post.user = uidToUser[post.uid];
+            }
+            else { post.user = "Anonymous" }
             Posts.overrideGuestHandle(post, post.handle);
             post.handle = undefined;
             post.topic = tidToTopic[post.tid];
