@@ -14,7 +14,8 @@
         "lint": "npx tsc && eslint --cache ./nodebb .",
         "test": "npx tsc && nyc --reporter=html --reporter=text-summary mocha",
         "coverage": "nyc report --reporter=text-lcov > ./coverage/lcov.info",
-        "coveralls": "nyc report --reporter=text-lcov | coveralls && rm -r coverage"
+        "coveralls": "nyc report --reporter=text-lcov | coveralls && rm -r coverage",
+        "install": "nodebb-plugin-extended-markdown"
     },
     "nyc": {
         "exclude": [
@@ -99,6 +100,7 @@
         "nodebb-plugin-emoji-android": "3.0.0",
         "nodebb-plugin-location-to-map": "^0.1.1",
         "nodebb-plugin-markdown": "10.1.1",
+        "nodebb-plugin-extended-markdown": "2.0.1",
         "nodebb-plugin-mentions": "3.0.12",
         "nodebb-plugin-spam-be-gone": "1.0.2",
         "nodebb-rewards-essentials": "0.2.1",
