@@ -167,7 +167,7 @@
                     <tr>
                         <th align="left">
                             <a href="https://github.com/CMU-313/spring24-nodebb-team-garden/issues?q=author%3Ammwathe+type%3Aissue+created%3A2024-01-20T00:00:00-05:00..2024-03-29T23:59:00-05:00">
-                            Issues: 0
+                            Issues: 1
                             </a>
                         </th>
                     <tr>
@@ -230,7 +230,7 @@
                     <tr>
                         <th align="left">
                             <a href="https://github.com/CMU-313/spring24-nodebb-team-garden/issues?q=author%3Akdunkerl+type%3Aissue+created%3A2024-01-20T00:00:00-05:00..2024-03-29T23:59:00-05:00">
-                            Issues: 15
+                            Issues: 18
                             </a>
                         </th>
                     <tr>
@@ -243,7 +243,7 @@
                     <tr>
                     <tr>
                         <th align="left">
-                            Comments: 0
+                            Comments: 1
                         </th>
                     <tr>
                 </table>
@@ -306,7 +306,7 @@
                     <tr>
                     <tr>
                         <th align="left">
-                            Comments: 4
+                            Comments: 7
                         </th>
                     <tr>
                 </table>
