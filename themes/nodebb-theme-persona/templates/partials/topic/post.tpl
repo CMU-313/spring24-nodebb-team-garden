@@ -1,5 +1,5 @@
 <div class="clearfix post-header">
-    <!-- IF !posts.anonymous -->
+    <!-- IF !posts.is_anonymous -->
      <div class="icon pull-left">
          <a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->">
             {buildAvatar(posts.user, "sm2x", true, "", "user/picture")}
@@ -10,7 +10,7 @@
 
     <small class="pull-left">
         <strong>
-        <!-- IF posts.anonymous -->
+        <!-- IF posts.is_anonymous -->
             <p itemprop="author">Anonymous</p>
         <!-- ELSE -->
             <a href="{config.relative_path}/user/{posts.user.userslug}" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}">{posts.user.displayname}</a>
