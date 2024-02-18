@@ -64,6 +64,8 @@ get:
                     type: boolean
                   downvoted:
                     type: boolean
+                  is_anonymous:
+                    type: string
 put:
   tags:
     - posts

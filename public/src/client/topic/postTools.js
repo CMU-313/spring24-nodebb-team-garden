@@ -1,8 +1,5 @@
 'use strict';
 
-const { assert } = require('../../../../src/middleware');
-
-
 define('forum/topic/postTools', [
     'share',
     'navigator',
