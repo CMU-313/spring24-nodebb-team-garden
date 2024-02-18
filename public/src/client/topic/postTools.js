@@ -1,5 +1,7 @@
 'use strict';
 
+const { assert } = require('../../../../src/middleware');
+
 
 define('forum/topic/postTools', [
     'share',
@@ -261,6 +263,8 @@ define('forum/topic/postTools', [
         console.assert(typeof(postContainer.on) === 'function');
         postContainer.on('click', '[component="post/anonymize"]', function () {     
             const pid = getData($(this), 'data-pid');
+
+            console.assert(typeof(pid) == 'string');
 
             api["put"](`/posts/${pid}`, { pid: pid, is_anonymous: true, content: "" }, function (err) {
                 if (err) {

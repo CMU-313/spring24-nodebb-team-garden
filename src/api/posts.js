@@ -44,6 +44,9 @@ postsAPI.get = async function (caller, data) {
 
 postsAPI.edit = async function (caller, data) {
     if(data.hasOwnProperty("is_anonymous")) {
+        console.assert(data.hasOwnProperty(pid));
+        console.assert(typeof(data.pid) == 'string');
+        console.assert(typeof(data.is_anonymous) == 'boolean');
         await posts.setPostField(data.pid, "is_anonymous", data.is_anonymous);
 
         return {};
