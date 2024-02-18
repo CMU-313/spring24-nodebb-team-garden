@@ -47,7 +47,7 @@ module.exports = function (Posts) {
             postData.handle = data.handle;
         }
 
-        postData.is_anonymous = false;
+        postData.is_anonymous = '';
 
         let result = await plugins.hooks.fire('filter:post.create', { post: postData, data: data });
         postData = result.post;

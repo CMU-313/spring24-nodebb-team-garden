@@ -263,7 +263,7 @@ define('forum/topic/postTools', [
 
             console.assert(typeof pid === 'string');
 
-            api.put(`/posts/${pid}`, { pid: pid, is_anonymous: true, content: '' }, function (err) {
+            api.put(`/posts/${pid}`, { pid: pid, is_anonymous: 'true', content: '' }, function (err) {
                 if (err) {
                     return alerts.error(err);
                 }
