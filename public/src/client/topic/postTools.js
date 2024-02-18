@@ -86,8 +86,8 @@ define('forum/topic/postTools', [
 
     function addPostHandlers(tid) {
         const postContainer = components.get('topic');
-        console.assert(typeof(postContainer) == 'object');
-        console.assert(typeof(postContainer.on) === 'function');
+        console.assert(typeof postContainer === 'object');
+        console.assert(typeof postContainer.on === 'function');
 
         handleSelectionTooltip();
 
@@ -256,14 +256,14 @@ define('forum/topic/postTools', [
         });
 
         // handles what happens when an post/anonymize component is clicked
-        console.assert(typeof(postContainer) == 'object');
-        console.assert(typeof(postContainer.on) === 'function');
-        postContainer.on('click', '[component="post/anonymize"]', function () {     
+        console.assert(typeof postContainer === 'object');
+        console.assert(typeof postContainer.on === 'function');
+        postContainer.on('click', '[component="post/anonymize"]', function () {
             const pid = getData($(this), 'data-pid');
 
-            console.assert(typeof(pid) == 'string');
+            console.assert(typeof pid === 'string');
 
-            api["put"](`/posts/${pid}`, { pid: pid, is_anonymous: true, content: "" }, function (err) {
+            api.put(`/posts/${pid}`, { pid: pid, is_anonymous: true, content: '' }, function (err) {
                 if (err) {
                     return alerts.error(err);
                 }
