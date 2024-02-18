@@ -43,8 +43,8 @@ postsAPI.get = async function (caller, data) {
 };
 
 postsAPI.edit = async function (caller, data) {
-    if(data.hasOwnProperty("isAnonymous")) {
-        await posts.setPostField(data.pid, "isAnonymous", data.isAnonymous);
+    if(data.hasOwnProperty("is_anonymous")) {
+        await posts.setPostField(data.pid, "is_anonymous", data.is_anonymous);
 
         return {};
     }

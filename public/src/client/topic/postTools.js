@@ -262,7 +262,7 @@ define('forum/topic/postTools', [
         postContainer.on('click', '[component="post/anonymize"]', function () {     
             const pid = getData($(this), 'data-pid');
 
-            api["put"](`/posts/${pid}`, { pid: pid, isAnonymous: true, content: "" }, function (err) {
+            api["put"](`/posts/${pid}`, { pid: pid, is_anonymous: true, content: "" }, function (err) {
                 if (err) {
                     return alerts.error(err);
                 }
