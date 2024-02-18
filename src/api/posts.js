@@ -43,6 +43,12 @@ postsAPI.get = async function (caller, data) {
 };
 
 postsAPI.edit = async function (caller, data) {
+    if(data.hasOwnProperty("isAnonymous")) {
+        await posts.setPostField(data.pid, "isAnonymous", data.isAnonymous);
+
+        return {};
+    }
+
     if (!data || !data.pid || (meta.config.minimumPostLength !== 0 && !data.content)) {
         throw new Error('[[error:invalid-data]]');
     }

@@ -259,8 +259,14 @@ define('forum/topic/postTools', [
         // handles what happens when an post/anonymize component is clicked
         console.assert(typeof(postContainer) == 'object');
         console.assert(typeof(postContainer.on) === 'function');
-        postContainer.on('click', '[component="post/anonymize"]', function () {            
-            console.log("worked!");
+        postContainer.on('click', '[component="post/anonymize"]', function () {     
+            const pid = getData($(this), 'data-pid');
+
+            api["put"](`/posts/${pid}`, { pid: pid, isAnonymous: true, content: "" }, function (err) {
+                if (err) {
+                    return alerts.error(err);
+                }
+            });
         });
     }
 
