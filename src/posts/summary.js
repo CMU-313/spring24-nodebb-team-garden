@@ -45,9 +45,9 @@ module.exports = function (Posts) {
                 post.uid = 0;
             }
             if (!post.anonymous && post.uid === 0) {
-                post.user = uidToUser[post.uid];
+                post.user = uidToUser[post.uid]; 
             }
-            else { post.user = "Anonymous" }
+            else { post.user = 'Anonymous'; }
             Posts.overrideGuestHandle(post, post.handle);
             post.handle = undefined;
             post.topic = tidToTopic[post.tid];
