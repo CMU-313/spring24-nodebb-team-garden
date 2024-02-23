@@ -85,7 +85,11 @@
     </li>
     <li>
         <a component="post/anonymize" role="menuitem" tabindex="-1" href="#">
-            <span class="anonymize-text">[[topic:anonymize]]</span>
+            {{{ if (posts.is_anonymous == "true") }}}
+                <span class="anonymize-text">[[topic:anonymize]]</span>
+            {{{ else }}}
+                <span class="anonymize-text">[[topic:de_anonymize]]</span>
+            {{{ end }}}
         </a>
     </li>
     {{{ end }}}
