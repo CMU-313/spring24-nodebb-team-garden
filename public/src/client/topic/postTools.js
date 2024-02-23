@@ -275,9 +275,7 @@ define('forum/topic/postTools', [
                         }
                     });
                 }
-            }); 
-
-            
+            });
         });
     }
 
