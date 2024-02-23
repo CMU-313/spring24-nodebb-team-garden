@@ -1,0 +1,41 @@
+diff --git a/node_modules/nodebb-plugin-markdown/public/js/client.js b/node_modules/nodebb-plugin-markdown/public/js/client.js
+index 0c086e8..60e9d7d 100644
+--- a/node_modules/nodebb-plugin-markdown/public/js/client.js
++++ b/node_modules/nodebb-plugin-markdown/public/js/client.js
+@@ -109,6 +109,7 @@
+ 		], function (formatting, controls, translator) {
+ 			if (formatting && controls) {
+ 				translator.getTranslations(window.config.userLang || window.config.defaultLang, 'markdown', function (strings) {
++
+ 					formatting.addButtonDispatch('bold', function (textarea, selectionStart, selectionEnd) {
+ 						if (selectionStart === selectionEnd) {
+ 							var block = controls.getBlockData(textarea, '**', selectionStart);
+@@ -233,6 +234,28 @@
+ 							);
+ 						}
+ 					});
++
++					// add a new button dispatch
++					formatting.addButtonDispatch('increase_size', function (textarea, selectionStart, selectionEnd) {
++						if (selectionStart === selectionEnd) {
++							var block = controls.getBlockData(textarea, '*/', selectionStart);
++
++							if (block.in && block.atEnd) {
++								// At end of bolded string, move cursor past delimiters
++								controls.updateTextareaSelection(textarea, selectionStart + 2, selectionStart + 2);
++							} else {
++								controls.insertIntoTextarea(textarea, '*/' + strings.increase_size_text + '*/');
++								controls.updateTextareaSelection(
++									textarea, selectionStart + 2, selectionStart + strings.increase_size_text.length + 2
++								);
++							}
++						} else {
++							var wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '*/');
++							controls.updateTextareaSelection(
++								textarea, selectionStart + 2 + wrapDelta[0], selectionEnd + 2 - wrapDelta[1]
++							);
++						}
++					});
+ 				});
+ 			}
+ 		});
