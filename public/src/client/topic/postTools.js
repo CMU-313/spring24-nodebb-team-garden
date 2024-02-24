@@ -264,10 +264,12 @@ define('forum/topic/postTools', [
             console.assert(typeof pid === 'string');
 
             api.get(`/posts/${pid}`, {}).then((post) => {
-                console.assert(typeof post === 'object');
                 if (post) {
-                    let anonymous = 'true';
+                    console.assert(typeof post === 'object');
+                    console.assert(post.hasOwnProperty('is_anonymous'));
                     console.assert(typeof post.is_anonymous === 'string');
+
+                    let anonymous = 'true';
                     if (post.is_anonymous === 'true') {
                         anonymous = 'false';
                     }
