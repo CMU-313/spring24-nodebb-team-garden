@@ -263,9 +263,21 @@ define('forum/topic/postTools', [
 
             console.assert(typeof pid === 'string');
 
-            api.put(`/posts/${pid}`, { pid: pid, is_anonymous: 'true', content: '' }, function (err) {
-                if (err) {
-                    return alerts.error(err);
+            api.get(`/posts/${pid}`, {}).then((post) => {
+                if (post) {
+                    console.assert(typeof post === 'object');
+                    console.assert(post.hasOwnProperty('is_anonymous'));
+                    console.assert(typeof post.is_anonymous === 'string');
+
+                    let anonymous = 'true';
+                    if (post.is_anonymous === 'true') {
+                        anonymous = 'false';
+                    }
+                    api.put(`/posts/${pid}`, { pid: pid, is_anonymous: anonymous, content: '' }, function (err) {
+                        if (err) {
+                            return alerts.error(err);
+                        }
+                    });
                 }
             });
         });

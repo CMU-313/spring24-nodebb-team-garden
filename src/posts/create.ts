@@ -87,7 +87,7 @@ module.exports = function (Posts: { create: (data: CreateData) => Promise<unknow
             postData.handle = data.handle;
         }
 
-        postData.is_anonymous = '';
+        postData.is_anonymous = 'false';
 
         let result: { post: PostData } = await plugins.hooks.fire('filter:post.create', { post: postData, data: data }) as { post : PostData };
         postData = result.post;

@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// Referenced @TevinWang’s TypeScript translation from P1: https://github.com/CMU-313/NodeBB/pull/23
 const _ = require("lodash");
 const meta = require("../meta");
 const db = require("../database");
@@ -64,7 +65,7 @@ module.exports = function (Posts) {
         if (data.handle && !parseInt(uid, 10)) {
             postData.handle = data.handle;
         }
-        postData.is_anonymous = '';
+        postData.is_anonymous = 'false';
         let result = yield plugins.hooks.fire('filter:post.create', { post: postData, data: data });
         postData = result.post;
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
