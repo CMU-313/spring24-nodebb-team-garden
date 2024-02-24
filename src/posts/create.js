@@ -65,7 +65,7 @@ module.exports = function (Posts) {
         if (data.handle && !parseInt(uid, 10)) {
             postData.handle = data.handle;
         }
-        postData.is_anonymous = '';
+        postData.is_anonymous = 'false';
         let result = yield plugins.hooks.fire('filter:post.create', { post: postData, data: data });
         postData = result.post;
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
