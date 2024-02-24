@@ -1,6 +1,5 @@
 'use strict';
 
-
 define('forum/topic/postTools', [
     'share',
     'navigator',
@@ -87,6 +86,8 @@ define('forum/topic/postTools', [
 
     function addPostHandlers(tid) {
         const postContainer = components.get('topic');
+        console.assert(typeof postContainer === 'object');
+        console.assert(typeof postContainer.on === 'function');
 
         handleSelectionTooltip();
 
@@ -252,6 +253,33 @@ define('forum/topic/postTools', [
 
         postContainer.on('click', '[component="post/chat"]', function () {
             openChat($(this));
+        });
+
+        // handles what happens when an post/anonymize component is clicked
+        console.assert(typeof postContainer === 'object');
+        console.assert(typeof postContainer.on === 'function');
+        postContainer.on('click', '[component="post/anonymize"]', function () {
+            const pid = getData($(this), 'data-pid');
+
+            console.assert(typeof pid === 'string');
+
+            api.get(`/posts/${pid}`, {}).then((post) => {
+                if (post) {
+                    console.assert(typeof post === 'object');
+                    console.assert(post.hasOwnProperty('is_anonymous'));
+                    console.assert(typeof post.is_anonymous === 'string');
+
+                    let anonymous = 'true';
+                    if (post.is_anonymous === 'true') {
+                        anonymous = 'false';
+                    }
+                    api.put(`/posts/${pid}`, { pid: pid, is_anonymous: anonymous, content: '' }, function (err) {
+                        if (err) {
+                            return alerts.error(err);
+                        }
+                    });
+                }
+            });
         });
     }
 

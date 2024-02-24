@@ -1,20 +1,20 @@
 <div class="clearfix post-header">
-    <!-- IF !posts.anonymous -->
+    {{{ if (posts.is_anonymous == "false") }}}
      <div class="icon pull-left">
          <a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->">
             {buildAvatar(posts.user, "sm2x", true, "", "user/picture")}
             <i component="user/status" class="fa fa-circle status {posts.user.status}" title="[[global:{posts.user.status}]]"></i>
         </a>
     </div>
-     <!-- ENDIF -->
+    {{{ end }}}
 
     <small class="pull-left">
         <strong>
-        <!-- IF posts.anonymous -->
+        {{{ if (posts.is_anonymous == "true") }}}
             <p itemprop="author">Anonymous</p>
-        <!-- ELSE -->
+        {{{ else }}}
             <a href="{config.relative_path}/user/{posts.user.userslug}" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}">{posts.user.displayname}</a>
-        <!-- ENDIF -->
+        {{{ end }}}
         </strong>
 
         <!-- IMPORT partials/topic/badge.tpl -->
