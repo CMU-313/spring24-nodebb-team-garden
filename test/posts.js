@@ -636,6 +636,56 @@ describe('Post\'s', () => {
             assert.strictEqual(data.content, 'A reply to edit');
         });
     });
+    describe('anonymize', () => {
+        // async function createAnonymousPost() {
+           
+        //     const postData = await topics.post({
+        //         uid: voterUid,
+        //         cid: cid,
+        //         title: 'test topic',
+        //         content: 'test anonymous post content',
+        //         is_anonymous: 'false'
+        //     });
+        //     return postData;
+        // }
+        // let pid;
+        // let uid;
+        // let content;
+
+        // before(async () => {
+        //     const postData = await createAnonymousPost();
+        //     uid = postData.uid;
+        //     pid = postData.pid;
+        //     content = postData.content;
+        // });
+
+        let pid;
+        let tid;
+        before((done) => {
+            topics.post({
+                uid: voterUid,
+                cid: cid,
+                title: 'topic to make anonymous',
+                content: 'A post to make anonymous',
+                is_anonymous: 'true',
+                tags: ['nodebb'],
+            }, (err, data) => {
+                assert.ifError(err);
+                pid = data.postData.pid;
+                tid = data.topicData.tid;
+                done()
+            });
+        });
+
+        it ('should anonymize a post', async () => {
+            await apiPosts.edit({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
+            const editedPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
+            assert.strictEqual(editedPost.is_anonymous, 'true');
+            done();
+        });
+        
+
+    });
 
     describe('move', () => {
         let replyPid;
