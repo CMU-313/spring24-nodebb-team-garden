@@ -100,6 +100,7 @@
         "nodebb-plugin-emoji-android": "3.0.0",
         "nodebb-plugin-location-to-map": "^0.1.1",
         "nodebb-plugin-extended-markdown": "2.0.1",
+        "nodebb-plugin-markdown": "12.2.5",
         "nodebb-plugin-ws-markdown": "10.1.0",
         "nodebb-plugin-mentions": "3.0.12",
         "nodebb-plugin-spam-be-gone": "1.0.2",
