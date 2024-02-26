@@ -492,7 +492,7 @@ async function enableDefaultPlugins() {
 
     let defaultEnabled = [
         'nodebb-plugin-composer-default',
-        "nodebb-plugin-extended-markdown",
+        'nodebb-plugin-markdown',
         'nodebb-plugin-mentions',
         'nodebb-widget-essentials',
         'nodebb-rewards-essentials',
