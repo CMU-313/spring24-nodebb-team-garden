@@ -114,7 +114,6 @@ define('forum/topic/postTools', [
         });
 
         postContainer.on('click', '[component="post/bookmark"]', function () {
-            console.log('what');
             return bookmarkPost($(this), getData($(this), 'data-pid'));
         });
 
@@ -260,7 +259,6 @@ define('forum/topic/postTools', [
         console.assert(typeof postContainer === 'object');
         console.assert(typeof postContainer.on === 'function');
         postContainer.on('click', '[component="post/anonymize"]', function () {
-            console.log('what');
             const pid = getData($(this), 'data-pid');
             console.assert(typeof pid === 'string');
             api.get(`/posts/${pid}`, {}).then((post) => {
