@@ -39,8 +39,6 @@ define('forum/topic/postTools', [
             const postEl = $this.parents('[data-pid]');
             const pid = postEl.attr('data-pid');
             const index = parseInt(postEl.attr('data-index'), 10);
-      
-            console.log("hello");
             socket.emit('posts.loadPostTools', { pid: pid, cid: ajaxify.data.cid }, async (err, data) => {
                 if (err) {
                     return alerts.error(err);
@@ -54,13 +52,13 @@ define('forum/topic/postTools', [
                         console.assert(typeof post.is_anonymous === 'string');
                         console.assert(post.is_anonymous === 'false' || post.is_anonymous === 'true');
                         data.posts.is_anonymous = post.is_anonymous;
-                    } 
-                    console.assert(data.posts.is_anonymous === 'false' || data.posts.is_anonymous === 'true');  
+                    }
+
+                    console.assert(data.posts.is_anonymous === 'false' || data.posts.is_anonymous === 'true');
                 });
 
                 data.posts.display_move_tools = data.posts.display_move_tools && index !== 0;
                 
-
                 const html = await app.parseAndTranslate('partials/topic/post-menu-list', data);
                 const clipboard = require('clipboard');
 
