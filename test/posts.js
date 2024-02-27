@@ -637,28 +637,6 @@ describe('Post\'s', () => {
         });
     });
     describe('anonymize', () => {
-        // async function createAnonymousPost() {
-           
-        //     const postData = await topics.post({
-        //         uid: voterUid,
-        //         cid: cid,
-        //         title: 'test topic',
-        //         content: 'test anonymous post content',
-        //         is_anonymous: 'false'
-        //     });
-        //     return postData;
-        // }
-        // let pid;
-        // let uid;
-        // let content;
-
-        // before(async () => {
-        //     const postData = await createAnonymousPost();
-        //     uid = postData.uid;
-        //     pid = postData.pid;
-        //     content = postData.content;
-        // });
-
         let pid;
         let tid;
         before((done) => {
@@ -673,18 +651,15 @@ describe('Post\'s', () => {
                 assert.ifError(err);
                 pid = data.postData.pid;
                 tid = data.topicData.tid;
-                done()
+                done();
             });
         });
 
-        it ('should anonymize a post', async () => {
-            await apiPosts.edit({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
-            const editedPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
+        it('should save the anonymous status of a post', async () => {
+            await apiPosts.edit({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid, is_anonymous: 'true'});
+            const editedPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid});
             assert.strictEqual(editedPost.is_anonymous, 'true');
-            done();
         });
-        
-
     });
 
     describe('move', () => {
