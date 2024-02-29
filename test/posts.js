@@ -23,6 +23,7 @@ const apiTopics = require('../src/api/topics');
 const meta = require('../src/meta');
 const file = require('../src/file');
 const helpers = require('./helpers');
+const pt = require('../public/src/client/topic/postTools');
 
 describe('Post\'s', () => {
     let voterUid;
@@ -660,7 +661,11 @@ describe('Post\'s', () => {
         });
 
         it('should save the anonymous status of a post', async () => {
-            await apiPosts.edit({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid, is_anonymous: 'true' });
+            const defaultPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
+            assert.strictEqual(defaultPost.is_anonymous, 'false');
+            assert.strictEqual(defaultPost.pid, pid);
+            pt.anonymizePost(pid);
+            // await apiPosts.edit({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid, is_anonymous: 'true' });
             const editedPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
             assert.strictEqual(editedPost.is_anonymous, 'true');
         });
