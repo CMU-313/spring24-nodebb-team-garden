@@ -656,8 +656,8 @@ describe('Post\'s', () => {
         });
 
         it('should save the anonymous status of a post', async () => {
-            await apiPosts.edit({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid, is_anonymous: 'true'});
-            const editedPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid});
+            await apiPosts.edit({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid, is_anonymous: 'true' });
+            const editedPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
             assert.strictEqual(editedPost.is_anonymous, 'true');
         });
     });
