@@ -645,7 +645,6 @@ describe('Post\'s', () => {
                 cid: cid,
                 title: 'topic to make anonymous',
                 content: 'A post to make anonymous',
-                is_anonymous: 'true',
                 tags: ['nodebb'],
             }, (err, data) => {
                 assert.ifError(err);
@@ -653,6 +652,11 @@ describe('Post\'s', () => {
                 tid = data.topicData.tid;
                 done();
             });
+        });
+
+        it('should default is_anonymous tag to false', async () => {
+            const defaultPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
+            assert.strictEqual(defaultPost.is_anonymous, 'false');
         });
 
         it('should save the anonymous status of a post', async () => {
