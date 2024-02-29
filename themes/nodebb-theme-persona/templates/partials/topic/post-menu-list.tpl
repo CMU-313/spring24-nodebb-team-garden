@@ -83,13 +83,24 @@
             <span component="post/bookmark-count" class="bookmarkCount badge" data-bookmarks="{posts.bookmarks}">{posts.bookmarks}</span>&nbsp;
         </a>
     </li>
+    {{{ end }}}
+
+    {{{ if (posts.is_anonymous == "true") }}}
     <li>
         <a component="post/anonymize" role="menuitem" tabindex="-1" href="#">
-            <span class="anonymize-text">[[topic:anonymize]]</span>
+                <span class="anonymize-text">[[topic:deanonymize]]</span>
         </a>
     </li>
     {{{ end }}}
 
+    {{{ if (posts.is_anonymous == "false") }}}
+    <li>
+        <a component="post/anonymize" role="menuitem" tabindex="-1" href="#">
+                <span class="anonymize-text">[[topic:anonymize]]</span>
+        </a>
+    </li>
+    {{{ end }}}
+    
     <li>
         <a role="menuitem" tabindex="-1" href="#" data-clipboard-text="{posts.absolute_url}">
             <i class="fa fa-fw fa-link"></i> [[topic:copy-permalink]]

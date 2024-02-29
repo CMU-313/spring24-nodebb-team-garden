@@ -636,6 +636,35 @@ describe('Post\'s', () => {
             assert.strictEqual(data.content, 'A reply to edit');
         });
     });
+    describe('anonymize', () => {
+        let pid;
+        let tid;
+        before((done) => {
+            topics.post({
+                uid: voterUid,
+                cid: cid,
+                title: 'topic to make anonymous',
+                content: 'A post to make anonymous',
+                tags: ['nodebb'],
+            }, (err, data) => {
+                assert.ifError(err);
+                pid = data.postData.pid;
+                tid = data.topicData.tid;
+                done();
+            });
+        });
+
+        it('should default is_anonymous tag to false', async () => {
+            const defaultPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
+            assert.strictEqual(defaultPost.is_anonymous, 'false');
+        });
+
+        it('should save the anonymous status of a post', async () => {
+            await apiPosts.edit({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid, is_anonymous: 'true' });
+            const editedPost = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
+            assert.strictEqual(editedPost.is_anonymous, 'true');
+        });
+    });
 
     describe('move', () => {
         let replyPid;
