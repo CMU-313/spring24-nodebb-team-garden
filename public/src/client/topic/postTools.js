@@ -261,24 +261,7 @@ define('forum/topic/postTools', [
         postContainer.on('click', '[component="post/anonymize"]', function () {
             const pid = getData($(this), 'data-pid');
             console.assert(typeof pid === 'string');
-            api.get(`/posts/${pid}`, {}).then((post) => {
-                if (post) {
-                    console.assert(typeof post === 'object');
-                    console.assert(post.hasOwnProperty('is_anonymous'));
-                    console.assert(typeof post.is_anonymous === 'string');
-
-                    let anonymous = 'true';
-                    if (post.is_anonymous === 'true') {
-                        anonymous = 'false';
-                    }
-                    api.put(`/posts/${pid}`, { pid: pid, is_anonymous: anonymous, content: '' }, function (err) {
-                        if (err) {
-                            return alerts.error(err);
-                        }
-                        window.location.reload();
-                    });
-                }
-            });
+            anonymizePost(pid);
         });
     }
 
@@ -389,6 +372,33 @@ define('forum/topic/postTools', [
             hooks.fire(`action:post.${type}`, { pid: pid });
         });
         return false;
+    }
+
+
+    /**
+     * Anonymize/deanonymize a post with pid
+     * @param pid : string
+     */
+    function anonymizePost(pid) {
+        console.assert(typeof pid === 'string');
+        api.get(`/posts/${pid}`, {}).then((post) => {
+            if (post) {
+                console.assert(typeof post === 'object');
+                console.assert(post.hasOwnProperty('is_anonymous'));
+                console.assert(typeof post.is_anonymous === 'string');
+
+                let anonymous = 'true';
+                if (post.is_anonymous === 'true') {
+                    anonymous = 'false';
+                }
+                api.put(`/posts/${pid}`, { pid: pid, is_anonymous: anonymous, content: '' }, function (err) {
+                    if (err) {
+                        return alerts.error(err);
+                    }
+                    window.location.reload();
+                });
+            }
+        });
     }
 
     function getData(button, data) {
