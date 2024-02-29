@@ -260,9 +260,7 @@ define('forum/topic/postTools', [
         console.assert(typeof postContainer.on === 'function');
         postContainer.on('click', '[component="post/anonymize"]', function () {
             const pid = getData($(this), 'data-pid');
-
             console.assert(typeof pid === 'string');
-
             api.get(`/posts/${pid}`, {}).then((post) => {
                 if (post) {
                     console.assert(typeof post === 'object');
@@ -277,6 +275,7 @@ define('forum/topic/postTools', [
                         if (err) {
                             return alerts.error(err);
                         }
+                        window.location.reload();
                     });
                 }
             });
