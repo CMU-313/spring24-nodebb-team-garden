@@ -675,7 +675,6 @@ describe('Post\'s', () => {
             const editedPostFalse = await apiPosts.get({ uid: voterUid }, { pid: pid, content: 'A post to make anonymous', tid: tid });
             assert.strictEqual(editedPostFalse.is_anonymous, 'false');
         });
-
     });
 
     describe('move', () => {
