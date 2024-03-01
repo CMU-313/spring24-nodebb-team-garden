@@ -9,7 +9,7 @@
     - go to an existing post that is anonymous
     - click the post drop down button to access the post tools
     - click the deanonymize button in the post tools list
-- Note: if dropdown is not appearing, rebuild NodeBB, or try replying to the post
+- Note: if dropdown or anonymize option is not appearing, rebuild NodeBB, refresh the page, or try making a new reply to the post
 
 ## Testing:
 - Link: test/posts.js, lines 640-679
