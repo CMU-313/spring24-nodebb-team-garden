@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "nodebb-theme-persona": {
+      "signature": "2cca876740a5d84d6b6d5792bffc99ac",
+      "file": true
+    }
+  }
+}
