@@ -136,7 +136,7 @@ Themes.setupPaths = async () => {
         currentThemeId: Meta.configs.get('theme:id'),
     });
 
-    const themeId = data.currentThemeId || 'nodebb-theme-persona';
+    const themeId = data.currentThemeId || 'nodebb-theme-persona-modified';
 
     if (process.env.NODE_ENV === 'development') {
         winston.info(`[themes] Using theme ${themeId}`);

@@ -108,7 +108,7 @@ describe('socket.io', () => {
     });
 
     it('should get installed themes', (done) => {
-        const themes = ['nodebb-theme-persona'];
+        const themes = ['nodebb-theme-persona-modified'];
         io.emit('admin.themes.getInstalled', (err, data) => {
             assert.ifError(err);
             assert(data);
@@ -441,11 +441,11 @@ describe('socket.io', () => {
     });
 
     it('should set theme to local persona', (done) => {
-        socketAdmin.themes.set({ uid: adminUid }, { type: 'local', id: 'nodebb-theme-persona' }, (err) => {
+        socketAdmin.themes.set({ uid: adminUid }, { type: 'local', id: 'nodebb-theme-persona-modified' }, (err) => {
             assert.ifError(err);
             meta.configs.get('theme:id', (err, id) => {
                 assert.ifError(err);
-                assert.equal(id, 'nodebb-theme-persona');
+                assert.equal(id, 'nodebb-theme-persona-modified');
                 done();
             });
         });
@@ -486,7 +486,7 @@ describe('socket.io', () => {
 
     it('should order active plugins', (done) => {
         const data = [
-            { name: 'nodebb-theme-persona', order: 0 },
+            { name: 'nodebb-theme-persona-modified', order: 0 },
             { name: 'nodebb-plugin-dbsearch', order: 1 },
             { name: 'nodebb-plugin-markdown', order: 2 },
             { ignoreme: 'wrong data' },

@@ -866,7 +866,7 @@ describe('Controllers', () => {
     });
 
     it('should load theme screenshot', (done) => {
-        request(`${nconf.get('url')}/css/previews/nodebb-theme-persona`, (err, res, body) => {
+        request(`${nconf.get('url')}/css/previews/nodebb-theme-persona-modified`, (err, res, body) => {
             assert.ifError(err);
             assert.equal(res.statusCode, 200);
             assert(body);

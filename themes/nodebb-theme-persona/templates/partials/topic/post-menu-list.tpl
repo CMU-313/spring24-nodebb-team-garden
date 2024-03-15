@@ -84,22 +84,6 @@
         </a>
     </li>
     {{{ end }}}
-
-    {{{ if (posts.is_anonymous == "true") }}}
-    <li>
-        <a component="post/anonymize" role="menuitem" tabindex="-1" href="#">
-                <span class="anonymize-text">[[topic:deanonymize]]</span>
-        </a>
-    </li>
-    {{{ end }}}
-
-    {{{ if (posts.is_anonymous == "false") }}}
-    <li>
-        <a component="post/anonymize" role="menuitem" tabindex="-1" href="#">
-                <span class="anonymize-text">[[topic:anonymize]]</span>
-        </a>
-    </li>
-    {{{ end }}}
     
     <li>
         <a role="menuitem" tabindex="-1" href="#" data-clipboard-text="{posts.absolute_url}">

@@ -105,7 +105,7 @@ async function resetTheme(themeId) {
 }
 
 async function resetThemes() {
-    await resetThemeTo('nodebb-theme-persona');
+    await resetThemeTo('nodebb-theme-persona-modified');
 }
 
 async function resetThemeTo(themeId) {

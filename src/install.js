@@ -250,7 +250,7 @@ async function enableDefaultTheme() {
         return;
     }
 
-    const defaultTheme = nconf.get('defaultTheme') || 'nodebb-theme-persona';
+    const defaultTheme = nconf.get('defaultTheme') || 'nodebb-theme-persona-modified';
     console.log(`Enabling default theme: ${defaultTheme}`);
     await meta.themes.set({
         type: 'local',
