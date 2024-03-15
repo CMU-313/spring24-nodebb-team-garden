@@ -103,6 +103,7 @@
         "nodebb-plugin-spam-be-gone": "1.0.2",
         "nodebb-rewards-essentials": "0.2.1",
         "nodebb-widget-essentials": "6.0.1",
+        "nodebb-theme-anonymous": "0.1.0",
         "nodemailer": "6.8.0",
         "nprogress": "0.2.0",
         "passport": "0.6.0",

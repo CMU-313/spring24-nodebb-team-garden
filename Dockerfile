@@ -16,6 +16,8 @@ USER node
 RUN npm install && \
     npm cache clean --force
 
+RUN npm install nodebb-theme-anonymous
+
 COPY --chown=node:node . /usr/src/app
 
 ENV NODE_ENV=production \
