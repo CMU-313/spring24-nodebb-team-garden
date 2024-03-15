@@ -2,8 +2,9 @@
   "version": "v1",
   "packages": {
     "nodebb-theme-persona": {
-      "signature": "2cca876740a5d84d6b6d5792bffc99ac",
-      "file": true
+      "signature": "4fe297befce92d8ed974dd4a1ba8a506",
+      "file": true,
+      "replaced": "link:.yalc/nodebb-theme-persona"
     }
   }
 }
