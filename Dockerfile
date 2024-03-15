@@ -26,4 +26,4 @@ EXPOSE 4567
 
 RUN chmod +x create_config.sh
 
-CMD  ./create_config.sh -n "${SETUP}" && ./nodebb setup && cp -r .yalc/nodebb-theme-persona/templates/partials/ themes/nodebb-theme-persona/templates/partials/; node ./nodebb build; node ./nodebb start
+CMD  cp -r .yalc/nodebb-theme-persona/templates/partials/ themes/nodebb-theme-persona/templates/partials/ && ./create_config.sh -n "${SETUP}" && ./nodebb setup || cp -r .yalc/nodebb-theme-persona/templates/partials/ themes/nodebb-theme-persona/templates/partials/; node ./nodebb build; node ./nodebb start
