@@ -25,5 +25,6 @@ ENV NODE_ENV=production \
 EXPOSE 4567
 
 RUN chmod +x create_config.sh
+RUN mkdir themes && cp -r .yalc/nodebb-theme-persona themes
 
 CMD  ./create_config.sh -n "${SETUP}" && ./nodebb setup || node ./nodebb build; node ./nodebb start
