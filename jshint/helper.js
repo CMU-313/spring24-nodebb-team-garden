@@ -46,9 +46,7 @@ function readFileToArray(filePath) {
 }
 
 http.createServer(async (req, res) => {
-    const { url } = req;
-
-    fs.readFile('index.html', async (err, data) => {
+    fs.readFile('index.html', async (err) => {
         if (err) {
             console.error('Error reading HTML file:', err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
