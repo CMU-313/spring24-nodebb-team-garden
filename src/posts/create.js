@@ -19,6 +19,7 @@ const topics = require("../topics");
 const categories = require("../categories");
 const groups = require("../groups");
 const utils = require("../utils");
+const translate = require('../translate');
 module.exports = function (Posts) {
     function addReplyTo(postData, timestamp) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -54,6 +55,8 @@ module.exports = function (Posts) {
             tid: tid,
             content: content,
             timestamp: timestamp,
+            translatedContent: translatedContent,
+            isEnglish: isEnglish,
         };
         if (data.toPid) {
             postData.toPid = data.toPid;
