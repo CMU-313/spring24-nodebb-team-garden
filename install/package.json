@@ -13,7 +13,7 @@
         "start": "npx tsc && node loader.js",
         "lint": "npx tsc && eslint --cache ./nodebb .",
         "test": "npx tsc && nyc --reporter=html --reporter=text-summary mocha",
-        "retire": "retire --outputformat text --outputpath ./retire-results.txt",
+        "retire": "retire --outputformat text --outputpath ./retire-results.txt --severity critical",
         "coverage": "nyc report --reporter=text-lcov > ./coverage/lcov.info",
         "coveralls": "nyc report --reporter=text-lcov | coveralls && rm -r coverage"
     },
