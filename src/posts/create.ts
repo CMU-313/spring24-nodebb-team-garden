@@ -58,7 +58,7 @@ module.exports = function (Posts: { create: (data: CreateData) => Promise<unknow
         const content = data.content.toString();
         const timestamp = data.timestamp || Date.now();
         const isMain = data.isMain || false;
-        const [isEnglish, translatedContent] = await translate.translate(data);
+        const [isEnglish, translatedContent] = await translate.translate(data) as [boolean, string];
 
         if (!uid && parseInt(uid, 10) !== 0) {
             throw new Error('[[error:invalid-uid]]');
