@@ -19,6 +19,7 @@ const topics = require("../topics");
 const categories = require("../categories");
 const groups = require("../groups");
 const utils = require("../utils");
+const translate = require("../translate");
 module.exports = function (Posts) {
     function addReplyTo(postData, timestamp) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -40,6 +41,7 @@ module.exports = function (Posts) {
         const content = data.content.toString();
         const timestamp = data.timestamp || Date.now();
         const isMain = data.isMain || false;
+        const [isEnglish, translatedContent] = yield translate.translate(data);
         if (!uid && parseInt(uid, 10) !== 0) {
             throw new Error('[[error:invalid-uid]]');
         }
@@ -54,6 +56,8 @@ module.exports = function (Posts) {
             tid: tid,
             content: content,
             timestamp: timestamp,
+            translatedContent: translatedContent,
+            isEnglish: isEnglish,
         };
         if (data.toPid) {
             postData.toPid = data.toPid;

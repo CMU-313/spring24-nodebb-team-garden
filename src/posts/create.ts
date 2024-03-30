@@ -9,6 +9,7 @@ import topics = require('../topics');
 import categories = require('../categories');
 import groups = require('../groups');
 import utils = require('../utils');
+import translate = require('../translate');
 
 type CreateData = {
   content?: string;
@@ -33,6 +34,8 @@ type PostData = {
   content: string;
   timestamp: number | Date;
   is_anonymous?: string;
+  translatedContent?: string,
+  isEnglish?: boolean,
 }
 
 module.exports = function (Posts: { create: (data: CreateData) => Promise<unknown>, uploads:
@@ -55,6 +58,7 @@ module.exports = function (Posts: { create: (data: CreateData) => Promise<unknow
         const content = data.content.toString();
         const timestamp = data.timestamp || Date.now();
         const isMain = data.isMain || false;
+        const [isEnglish, translatedContent] = await translate.translate(data) as [boolean, string];
 
         if (!uid && parseInt(uid, 10) !== 0) {
             throw new Error('[[error:invalid-uid]]');
@@ -73,6 +77,8 @@ module.exports = function (Posts: { create: (data: CreateData) => Promise<unknow
             tid: tid,
             content: content,
             timestamp: timestamp,
+            translatedContent: translatedContent,
+            isEnglish: isEnglish,
         };
 
         if (data.toPid) {
